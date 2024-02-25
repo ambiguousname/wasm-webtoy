@@ -41,6 +41,7 @@ window.onload = async function() {
 		} catch (error) {
 			alert(error);
 			console.error(error);
+			cm.setEditable(cm.editor, true);
 		}
 	}
 
