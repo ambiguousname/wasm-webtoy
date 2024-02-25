@@ -23,7 +23,10 @@ window.onload = async function() {
 		}
 		try {
 			let result = wabt.parseWat("", text);
-			let bin = result.toBinary({});
+			let bin = result.toBinary({
+				// In case anyone in the console wants to pause and debug:
+				write_debug_names: true,
+			});
 
 			if (bin.log !== "") {
 				alert(bin.log);
