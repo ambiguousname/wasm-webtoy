@@ -10,5 +10,4 @@ A tool for making online web assembly game in your browser from .WAT files and [
 - No real input sanitization, you can just put in whatever you want here and it'll compile and execute real web assembly. It's a fancier version of calling `eval()` on whatever's been written. 
   - Not an input sanitization expert, so I'm leaving it be for right now. You'd have to be pretty determined to write malicious JS in web assembly and then have them paste it into a web toy. 
 - TODO: Better CSS for editing
-- TODO: Being able to still see your game while editing
 - I hacked this together in a night
