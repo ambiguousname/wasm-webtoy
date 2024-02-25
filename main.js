@@ -2,8 +2,6 @@ import * as cm from "./editor.js";
 
 
 function resizeFromMouse(event) {
-	console.log("A");
-	console.log(event.clientX);
 	document.getElementById("text").style.minWidth = event.clientX + "px";
 }
 
