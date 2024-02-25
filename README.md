@@ -1,9 +1,9 @@
 # Wasm-Webtoy
-A tool for making online web assembly game in your browser from .WAT.
+A tool for making online web assembly game in your browser from .WAT files and [WASM-4](https://wasm4.org/).
 
 ## Features
 - Just a straight web compiler of Web Assembly to show off in your browser.
-- Uses WASM-4 for game rendering: https://wasm4.org/
+- Uses WASM-4 for game stuff: https://wasm4.org/
 - AssemblyScript's wabt.js for real-time compilation: https://github.com/AssemblyScript/wabt.js
 
 ## Problems
