@@ -1,6 +1,7 @@
 import {EditorView, basicSetup} from "codemirror";
 import { wast, wastLanguage } from "@codemirror/lang-wast";
-import { Compartment, EditorSelection, EditorState } from "@codemirror/state";
+import { Compartment, EditorSelection, EditorState, StateEffect } from "@codemirror/state";
+import { oneDark } from "@codemirror/theme-one-dark";
 
 const DEFAULT_CARTRIDGE = `;;
 ;; WASM-4: https://wasm4.org/docs
@@ -160,11 +161,44 @@ function setEditable(editor, value) {
 	});
 }
 
+let darkMode = new Compartment;
+
+function setDarkMode(editor, val) {
+	editor.dispatch({
+		effects: darkMode.reconfigure(val? oneDark : [])
+	})
+	
+	if (val) {
+		document.body.classList.add("dark-mode");
+	} else {
+		document.body.classList.remove("dark-mode");
+	}
+
+	localStorage.setItem("dark-mode", val);
+}
+
 let editor = new EditorView({
 	lineWrapping: true,
-	extensions: [basicSetup, wast(), readOnly.of(EditorState.readOnly.of(false)), EditorView.lineWrapping],
+	extensions: [basicSetup, wast(), readOnly.of(EditorState.readOnly.of(false)), EditorView.lineWrapping, darkMode.of([])],
 	parent: document.getElementById("text")
 });
+
+document.getElementById("dark-mode").oninput = (e) => {
+	setDarkMode(editor, e.target.checked);
+};
+
+
+let darkModeStorage;
+if ((darkModeStorage = localStorage.getItem("dark-mode")) !== null) {
+	let value = darkModeStorage === "true";
+	setDarkMode(editor, value);
+	if (value){
+		document.getElementById("dark-mode").checked = true;
+	}
+} else {
+	localStorage.setItem("dark-mode", false);
+}
+
 editor.dispatch({
 	changes: {from: 0, to: editor.state.doc.length, insert: DEFAULT_CARTRIDGE}
 });

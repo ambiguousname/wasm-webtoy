@@ -11,8 +11,19 @@
 			}
 			body {
 				display: flex;
+				flex-direction: column;
 				overflow: hidden;
 				margin: 0;
+				transition: 0.5s;
+			}
+
+			#top {
+				flex: 1;
+			}
+
+			#code {
+				display: flex;
+				flex: 2;
 			}
 
 			#text {
@@ -30,14 +41,73 @@
 				flex: 2;
 				width: 100%;
 			}
+
+			.dark-mode #top {
+				background-color: black;
+				color: white;
+			}
+
+			body * {
+				transition: 0.5s;
+			}
+
+			.dark-mode #github {
+				filter: none !important;
+			}
+			#top {
+				padding: 5px;
+				max-height: 20px;
+			}
+			#top div {
+				line-height: 120%;
+				text-align: center;
+			}
+
+			.dark-mode a:visited{
+				color: steelblue;
+			}
+
+			button {
+				cursor: pointer;
+				padding: 10px;
+				transition-duration: 0.5s;
+				transition-property: background-color;
+			}
+
+			.dark-mode button {
+				background-color: #333333;
+				color: white;
+				border-color: white;
+			}
+
+			.dark-mode button:hover {
+				background-color: #111111;
+			}
+
+			ul li {
+				flex: fit-content;
+			}
 		</style>
 	</head>
 	<body>
-		<div id="text">
-			<button id="compile">Compile & Run</button>
+		<div id="top">
+			<div style="align-content: center;">
+				<ul style="columns: 3; padding-left: 0; list-style: none; margin:0; display: flex;">
+				<li style="float:left;">Dark Mode <input type="checkbox" id="dark-mode"/> </li>
+				<li>Made with <a href="https://github.com/AssemblyScript/wabt.js/">WABT.js</a>, <a href="https://wasm4.org/">WASM-4</a>, and <a href="https://codemirror.net/">CodeMirror</a></li>
+				<li style="float:right;"><a href="https://github.com/ambiguousname/wasm-webtoy" style=" display: flex;">
+					<span style="margin-right: 5px;">Source on</span><img src="../assets/icons/github-mark-white.svg" style="filter:invert(); max-height: 20px;" id="github"/>
+				</a></li>
+				</ul>
+			</div>
 		</div>
-		<div id="resize"></div>
-		<iframe id="game" src="player.html">
-		</iframe>
+		<div id="code">
+			<div id="text">
+				<button id="compile">Compile & Run</button>
+			</div>
+			<div id="resize"></div>
+			<iframe id="game" src="player.html">
+			</iframe>
+		</div>
 	</body>
 </html>
