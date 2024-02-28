@@ -95,6 +95,7 @@
 			<div style="align-content: center;">
 				<ul style="columns: 3; padding-left: 0; list-style: none; margin:0; display: flex;">
 				<li>Dark Mode <input type="checkbox" id="dark-mode"/> </li>
+				<li><a id="game-download" href="#" download="game.html" onclick="document.getElementById('game-download').href=`data:text/attachment;base64,` + btoa(document.getElementById('game').contentDocument.documentElement.outerHTML);">Download your game</a></li>
 				<li>Made with <a href="https://github.com/AssemblyScript/wabt.js/">WABT.js</a>, <a href="https://wasm4.org/">WASM-4</a>, and <a href="https://codemirror.net/">CodeMirror</a></li>
 				<li><a href="https://github.com/ambiguousname/wasm-webtoy">
 					<span style="margin-right: 5px; position: relative; top: -15%;">Source on</span><img src="../assets/icons/github-mark-white.svg" style="filter:invert(); max-height: 20px;" id="github"/>
